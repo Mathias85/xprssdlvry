@@ -1,0 +1,33 @@
+
+mysql_auth:
+  image: mysql:latest
+  container_name: mysql_auth
+  ports:
+    - "6010:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: vanhackskipauthrootpassword
+    MYSQL_DATABASE: authdb
+    MYSQL_USERNAME: authdbuser
+    MYSQL_PASSWORD: authdbpass
+  volumes:
+    - "./dbscripts/auth:/docker-entrypoint-initdb.d"
+
+mysql_xprssdlvry:
+  image: mysql:latest
+  container_name: mysql_xprssdlvry
+  ports:
+    - "7010:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: vanhackskipxprssdlvryrootpassword
+    MYSQL_DATABASE: xprssdlvrydb
+    MYSQL_USERNAME: xprssdlvrydbuser
+    MYSQL_PASSWORD: xprssdlvrydbpass
+  volumes:
+    - "./dbscripts/xprssdlvry:/docker-entrypoint-initdb.d"
+
+rabbitmq:
+  image: rabbitmq:management
+  container_name: rabbitmq
+  ports:
+    - "5672:5672"
+    - "15672:15672"

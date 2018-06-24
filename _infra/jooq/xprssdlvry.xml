@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.11.0.xsd">
+    <!-- Configure the database connection here -->
+    <jdbc>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:7010/xprssdlvrydb</url>
+        <user>root</user>
+        <password>vanhackskipxprssdlvryrootpassword</password>
+    </jdbc>
+
+    <generator>
+        <!-- The default code generator. You can override this one, to generate your own code style.
+             Supported generators:
+             - org.jooq.codegen.JavaGenerator
+             - org.jooq.codegen.ScalaGenerator
+             Defaults to org.jooq.codegen.JavaGenerator -->
+        <name>org.jooq.codegen.JavaGenerator</name>
+
+        <strategy>
+            <name>JooqGeneratorStrategy</name>
+        </strategy>
+
+        <generate>
+            <pojos>true</pojos>
+            <javaTimeTypes>true</javaTimeTypes>
+            <pojosToString>true</pojosToString>
+            <records>false</records>
+            <serializablePojos>true</serializablePojos>
+            <relations>true</relations>
+            <daos>true</daos>
+            <springAnnotations>true</springAnnotations>
+        </generate>
+
+        <database>
+            <!-- The database type. The format here is:
+                 org.util.[database].[database]Database -->
+            <name>org.jooq.meta.mysql.MySQLDatabase</name>
+
+            <!-- The database schema (or in the absence of schema support, in your RDBMS this
+                 can be the owner, user, database name) to be generated -->
+            <inputSchema>xprssdlvrydb</inputSchema>
+
+            <!-- All elements that are generated from your schema
+                 (A Java regular expression. Use the pipe to separate several expressions)
+                 Watch out for case-sensitivity. Depending on your database, this might be important! -->
+            <includes>.*</includes>
+
+            <!-- All elements that are excluded from your schema
+                 (A Java regular expression. Use the pipe to separate several expressions).
+                 Excludes match before includes, i.e. excludes have a higher priority -->
+            <excludes>.*sequence</excludes>
+
+        </database>
+
+        <target>
+            <clean>true</clean>
+            <!-- The destination package of your generated classes (within the destination directory) -->
+            <packageName>mathias.vanhack.skip.model</packageName>
+
+            <!-- The destination directory of your generated classes. Using Maven directory layout here -->
+            <directory>../../commonsmodule/src/main/java</directory>
+        </target>
+    </generator>
+</configuration>
