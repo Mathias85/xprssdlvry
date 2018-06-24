@@ -29,6 +29,7 @@ XprssDlvry is a delivery application based on Skip the Dishes.
 ### Missing
  - Some validation
  - Messaging among the services for comunication
+ - Creating restaurants, Food and Users
  - Testing using DbUnit
 
 ### Testing Instructions
